@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цифровой конструктор ПИН — Костромская область</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo-area">
+                <img src="assets/coat_of_arms_kostroma.png" alt="Герб" class="logo-img" onerror="this.style.display='none'">
+                <div class="header-texts">
+                    <span class="region-name">КОСТРОМСКАЯ ОБЛАСТЬ</span>
+                    <span class="system-name">Цифровой конструктор ПИН</span>
+                </div>
+            </div>
+            <a href="https://adm44.ru" class="back-link" target="_blank">ВЕРНУТЬСЯ НА ОСНОВНОЙ ПОРТАЛ</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Цифровой конструктор ПИН</h1>
+
+        <div class="form-wrapper">
+            <div class="form-header">
+                <h2>Заполните необходимые данные в форме ниже</h2>
+                <span class="required-note">* – поля обязательные для заполнения</span>
+            </div>
+
+            <div class="system-description">
+                <p>Назначение ПП «Цифровой конструктор ПИН» – автоматическое формирование проекта установки и содержания информационных надписей и обозначений на объектах культурного наследия (памятниках истории и культуры) народов Российской Федерации, каменного и деревянного зодчества.</p>
+                <p>ПП «Цифровой конструктор ПИН» не применяется в отношении объектов археологического наследия, ансамблей и достопримечательных мест, а также информационной надписи, в виде отдельно стоящей конструкции.</p>
+                <p>ПП «Цифровой конструктор ПИН» основывается на Требованиях к составу проектов установки и содержания информационных надписей и обозначений на объектах культурного наследия (памятниках истории и культуры) народов Российской Федерации, на основании которых осуществляется такая установка, утвержденных постановлением Правительства Российской Федерации от 10.09.2019 № 1178.</p>
+            </div>
+
+            <form id="pinForm">
+                <div class="form-section">
+                    <div class="form-group">
+                        <label for="objectName" class="label-title">
+                            Выберите объект культурного наследия <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Выберите объект из выпадающего списка объектов культурного наследия, включенных в ЕГРОКН.
+                                </span>
+                            </div>
+                        </label>
+                        <select id="objectName" name="objectName" required>
+                            <option value="">Начните вводить наименование для вывода списка</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="historyInfo" class="label-title">
+                            Сведения о времени возникновения объекта или дата его создания, даты основных изменений (перестроек) объекта культурного наследия и (или) даты связанных с ним исторических событий, сведения об авторстве (при наличии) <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Пример заполнения:<br>
+                                    Построен в XVIII веке.<br>
+                                    Перестроен в 1850 году.<br>
+                                    Автор проекта – архитектор Иванов И.И.
+                                </span>
+                            </div>
+                        </label>
+                        <textarea id="historyInfo" name="historyInfo" maxlength="1000" placeholder="Сведения..." required></textarea>
+                        <div class="char-counter"><span id="counter-historyInfo">0</span>/1000</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="developer" class="label-title">
+                            Разработчик проекта <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Пример заполнения:<br>
+                                    ИП Иванов Иван Иванович<br>
+                                    ООО "Проектная организация"
+                                </span>
+                            </div>
+                        </label>
+                        <textarea id="developer" name="developer" maxlength="1000" placeholder="ФИО" required></textarea>
+                        <div class="char-counter"><span id="counter-developer">0</span>/1000</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="devPlace" class="label-title">
+                            Укажите место разработки проекта <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Пример заполнения:<br>
+                                    г. Кострома<br>
+                                    г. Москва
+                                </span>
+                            </div>
+                        </label>
+                        <textarea id="devPlace" name="devPlace" maxlength="1000" placeholder="Например: г. Кострома" required></textarea>
+                        <div class="char-counter"><span id="counter-devPlace">0</span>/1000</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location" class="label-title">
+                            Сведения о местонахождении объекта (адрес объекта или при его отсутствии описание местоположения объекта) <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Пример заполнения:<br>
+                                    Костромская область, г. Кострома, ул. Советская, д. 1<br>
+                                    Костромская область, Судиславский район, с. Раслово
+                                </span>
+                            </div>
+                        </label>
+                        <textarea id="location" name="location" maxlength="1000" placeholder="Например: Костромская область, г. Кострома, ул. Советская, д. 1" required></textarea>
+                        <div class="char-counter"><span id="counter-location">0</span>/1000</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="devDate" class="label-title">
+                            Укажите дату разработки проекта <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Дата заполнения формы в формате ГГГГ-ММ-ДД
+                                </span>
+                            </div>
+                        </label>
+                        <input type="date" id="devDate" name="devDate" required>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h3 class="section-title">Общие сведения об объекте культурного наследия</h3>
+                    
+                    <div class="form-group">
+                        <label for="category" class="label-title">
+                            Категория историко-культурного значения <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Выберите категорию объекта:<br>
+                                    • Федерального значения<br>
+                                    • Регионального значения<br>
+                                    • Местного значения
+                                </span>
+                            </div>
+                        </label>
+                        <select id="category" name="category" required>
+                            <option value="">Выберите значение...</option>
+                            <option value="federal">Федерального значения</option>
+                            <option value="regional">Регионального значения</option>
+                            <option value="local">Местного значения</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="objectType" class="label-title">
+                            Вид объекта культурного наследия <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Выберите вид объекта:<br>
+                                    • Памятник<br>
+                                    • Ансамбль
+                                </span>
+                            </div>
+                        </label>
+                        <select id="objectType" name="objectType" required>
+                            <option value="">Выберите значение...</option>
+                            <option value="monument">Памятник</option>
+                            <option value="ensemble">Ансамбль</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="protectionDate" class="label-title">
+                            Дата постановки на государственную охрану <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Пример заполнения:<br>
+                                    Решение исполкома Костромского областного Совета народных депутатов<br>
+                                    от 21.04.1983 № 246
+                                </span>
+                            </div>
+                        </label>
+                        <textarea id="protectionDate" name="protectionDate" maxlength="1000" placeholder="Например: Решение исполкома..." required></textarea>
+                        <div class="field-hint">
+                            <a href="https://opendata.mkrf.ru/opendata/7705851331-egrkn" target="_blank">Перейти в ЕГРОКН для поиска объекта</a>
+                        </div>
+                        <div class="char-counter"><span id="counter-protectionDate">0</span>/1000</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userInfo" class="label-title">
+                            Сведения о пользователе <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Пример заполнения:<br>
+                                    ИП Иванов, адрес: Ленинский переулок, 14, ИНН 360008221<br>
+                                    ООО "Управляющая компания", адрес: г. Кострома, ул. Мира, д. 10, ИНН 4400001234
+                                </span>
+                            </div>
+                        </label>
+                        <textarea id="userInfo" name="userInfo" maxlength="1000" placeholder="Например: ИП Иванов..." required></textarea>
+                        <div class="char-counter"><span id="counter-userInfo">0</span>/1000</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="egrknNumber" class="label-title">
+                            Регистрационный номер в едином государственном реестре объектов культурного наследия (памятников истории и культуры) народов Российской Федерации <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Пример заполнения:<br>
+                                    441410069670005
+                                </span>
+                            </div>
+                        </label>
+                        <input type="text" id="egrknNumber" name="egrknNumber" maxlength="1000" placeholder="Например: 441410069670005" required>
+                        <div class="field-hint">
+                            <a href="https://opendata.mkrf.ru/opendata/7705851331-egrkn" target="_blank">📋 Перейти в ЕГРОКН для поиска объекта</a>
+                        </div>
+                        <div class="char-counter"><span id="counter-egrknNumber">0</span>/1000</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="previousSigns" class="label-title">
+                            Сведения о ранее установленных информационных надписях <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Пример заполнения:<br>
+                                    Сведений не имеется<br>
+                                    Информационная надпись отсутствовала<br>
+                                    Ранее была установлена табличка 1990 года выпуска
+                                </span>
+                            </div>
+                        </label>
+                        <textarea id="previousSigns" name="previousSigns" maxlength="1000" placeholder="Сведений не имеется" required></textarea>
+                        <div class="char-counter"><span id="counter-previousSigns">0</span>/1000</div>
+                    </div>
+                    <div id="ensembleSection" class="form-section ensemble-section" style="display: none; background: #fff8e1; padding: 20px; border-left: 4px solid #ffa000; margin-top: 20px;">
+                        <h3 class="section-title"> Информация об объектах культурного наследия, входящих в состав ансамбля</h3>
+                        
+                        <div class="form-group">
+                            <label for="ensembleMonuments" class="label-title">
+                                Перечень памятников, расположенных в границах территории ансамбля <span class="req">*</span>
+                                <div class="tooltip-container">
+                                    <span style="font-size: 16px;">❓</span>
+                                    <span class="tooltip-text">
+                                        Перечислите все памятники, входящие в состав ансамбля
+                                    </span>
+                                </div>
+                            </label>
+                            <textarea id="ensembleMonuments" name="ensembleMonuments" maxlength="1000" placeholder="Перечислите памятники..."></textarea>
+                            <div class="char-counter"><span id="counter-ensembleMonuments">0</span>/1000</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="label-title">
+                                Карта-схема предполагаемого места установки информационной надписи <span class="req">*</span>
+                                <div class="tooltip-container">
+                                    <span style="font-size: 16px;">❓</span>
+                                    <span class="tooltip-text">
+                                        Загрузите скриншот карты с указанием места установки
+                                    </span>
+                                </div>
+                            </label>
+                            <div class="file-upload-wrapper">
+                                <input type="file" id="ensembleMap" name="ensembleMap" accept=".jpeg,.jpg,.png" class="file-input">
+                                <div class="file-upload-info">Размер файла не более 10 МБ, допустимые типы: .jpeg, .jpg, .png</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="label-title">
+                                Цветная фотофиксация объекта с указанием места размещения <span class="req">*</span>
+                                <div class="tooltip-container">
+                                    <span style="font-size: 16px;">❓</span>
+                                    <span class="tooltip-text">
+                                        Загрузите фотографию объекта с указанием места установки
+                                    </span>
+                                </div>
+                            </label>
+                            <div class="file-upload-wrapper">
+                                <input type="file" id="ensemblePhoto" name="ensemblePhoto" accept=".jpeg,.jpg,.png" class="file-input">
+                                <div class="file-upload-info">Размер файла не более 10 МБ, допустимые типы: .jpeg, .jpg, .png</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h3 class="section-title">Эскизное предложение информационной надписи и обозначения</h3>
+
+                    <div class="form-group">
+                        <label for="justification" class="label-title">
+                            Обоснование размещения информационной надписи, изготавливаемой в виде пластины <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Пример заполнения:<br>
+                                    Размещение информационной надписи необходимо для информирования посетителей об объекте культурного наследия в соответствии с требованиями законодательства.
+                                </span>
+                            </div>
+                        </label>
+                        <textarea id="justification" name="justification" maxlength="1000" placeholder="Обоснование размещения информационной надписи" required></textarea>
+                        <div class="char-counter"><span id="counter-justification">0</span>/1000</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="plateText" class="label-title">
+                            Впишите построчно наименование объекта, сведения о времени возникновения объекта культурного наследия или дату его создания, даты основных изменений (перестроек) объекта культурного наследия и (или) даты связанных с ним исторических событий так, как предполагается расположить их на табличке <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Пример заполнения:<br>
+                                    Церковь Воскресения Словущего<br>
+                                    1685 г.<br>
+                                    Перестроена в 1850 г.
+                                </span>
+                            </div>
+                        </label>
+                        <div class="text-size-controls">
+                            <button type="button" id="increaseFont" class="btn-small">A+</button>
+                            <button type="button" id="decreaseFont" class="btn-small">A-</button>
+                        </div>
+                        <textarea id="plateText" name="plateText" maxlength="1000" placeholder="Впишите построчно наименование объекта..." required></textarea>
+                        <div class="char-counter"><span id="counter-plateText">0</span>/1000</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="plateSize" class="label-title">
+                            Сведения о размере информационной надписи (высота и ширина), размере шрифта <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Выберите один из шаблонов:<br>
+                                    • Горизонтальная малая 50x30 см<br>
+                                    • Горизонтальная средняя 60x40 см<br>
+                                    • Горизонтальная большая 70x50 см<br>
+                                    • Вертикальная малая 30x50 см<br>
+                                    • Вертикальная средняя 40x60 см<br>
+                                    • Вертикальная большая 50x70 см
+                                </span>
+                            </div>
+                        </label>
+                        <select id="plateSize" name="plateSize" required>
+                            <option value="">Выберите размер...</option>
+                            <option value="horizontal_small">Горизонтальная малая 50x30 см</option>
+                            <option value="horizontal_medium">Горизонтальная средняя 60x40 см</option>
+                            <option value="horizontal_large">Горизонтальная большая 70x50 см</option>
+                            <option value="vertical_small">Вертикальная малая 30x50 см</option>
+                            <option value="vertical_medium">Вертикальная средняя 40x60 см</option>
+                            <option value="vertical_large">Вертикальная большая 50x70 см</option>
+                        </select>
+                    </div>
+
+                    <!-- ПРЕДПРОСМОТР ЭСКИЗА -->
+                    <div class="form-group">
+                        <label class="label-title">Предпросмотр эскиза информационной надписи</label>
+                        <div id="platePreview" class="plate-preview">
+                            <div class="plate-content">
+                                <div class="plate-header">
+                                    <img id="previewCoatOfArms" src="" alt="Герб" class="plate-herb" style="display: none;">
+                                </div>
+                                <div class="plate-title">ОБЪЕКТ КУЛЬТУРНОГО НАСЛЕДИЯ</div>
+                                <div id="previewObjectName" class="plate-text">[Наименование объекта]</div>
+                                <div id="previewHistory" class="plate-text">[Сведения о времени возникновения]</div>
+                                <div id="previewNumber" class="plate-text">№ [Регистрационный номер]</div>
+                                <div class="plate-footer">ОХРАНЯЕТСЯ ГОСУДАРСТВОМ</div>
+                            </div>
+                        </div>
+                        <div class="preview-note">Эскиз формируется автоматически на основе введенных данных</div>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h3 class="section-title">Технические характеристики информационной надписи и обозначения</h3>
+
+                    <div class="form-group">
+                        <label class="label-title">
+                            Материал пластины <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Неизменяемый шаблон согласно Требованиям
+                                </span>
+                            </div>
+                        </label>
+                        <select disabled required>
+                            <option selected>Пластик (композитный материал)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label-title">
+                            Покрытие пластины <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Неизменяемый шаблон согласно Требованиям
+                                </span>
+                            </div>
+                        </label>
+                        <select disabled required>
+                            <option selected>Ламинация пленкой с полноцветной печатью</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label-title">
+                            Толщина пластины <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Неизменяемый шаблон согласно Требованиям
+                                </span>
+                            </div>
+                        </label>
+                        <select disabled required>
+                            <option selected>6 мм</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="plateWeight" class="label-title">
+                            Расчетная масса пластины <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Автоматический расчет в зависимости от размера
+                                </span>
+                            </div>
+                        </label>
+                        <input type="text" id="plateWeight" name="plateWeight" readonly class="readonly-field" placeholder="Автоматический расчет...">
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h3 class="section-title">Описание метода крепления информационной надписи и обозначения</h3>
+
+                    <div class="form-group">
+                        <label for="wallMaterial" class="label-title">
+                            Материал стен для крепления <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Выберите материал стены объекта
+                                </span>
+                            </div>
+                        </label>
+                        <select id="wallMaterial" name="wallMaterial" required>
+                            <option value="">Выберите материал...</option>
+                            <option value="stone">Камень (кирпич, бетон)</option>
+                            <option value="wood">Дерево</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label-title">
+                            Эскиз с описанием крепежных элементов <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Неизменяемый шаблон согласно Приложению 1
+                                </span>
+                            </div>
+                        </label>
+                        <div class="fixed-scheme-wrapper">
+                            <img src="assets/scheme1.png" alt="Схема крепления: 4 анкера HILTI HRD-C 8x80" class="fixed-scheme-img" onerror="this.style.display='none'">
+                            <div class="scheme-caption">Схема крепления: 4 анкера HILTI HRD-C 8x80 (согласно Приложению 1 ТЗ)</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label-title">
+                            Расчет нагрузки под действием ветровой нагрузки <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Автоматический расчет по формулам из Приложения 2
+                                </span>
+                            </div>
+                        </label>
+                        <div class="calculation-result" id="windLoadResult">
+                            <div class="calc-formula">W = W₀ × K × C × (1 + k×v) × S × γf</div>
+                            <div class="calc-value">
+                                <span id="windLoadValue">0.0000</span> кН &lt; 0.60 кН
+                            </div>
+                            <div class="calc-status success" id="windLoadStatus">
+                                ✅ Условие прочности соблюдается
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label-title">
+                            Расчет несущей способности крепления (сила тяжести) <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Автоматический расчет по формулам из Приложения 2
+                                </span>
+                            </div>
+                        </label>
+                        <div class="calculation-result" id="gravityLoadResult">
+                            <div class="calc-formula">F = m × g</div>
+                            <div class="calc-value">
+                                <span id="gravityLoadValue">0.0000</span> кН &lt; 3.89 кН
+                            </div>
+                            <div class="calc-status success" id="gravityLoadStatus">
+                                ✅ Условие прочности соблюдается
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h3 class="section-title">Графические идентификаторы - QR-коды</h3>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="generateQR" name="generateQR">
+                            <span class="checkbox-text">Сгенерировать QR-код для объекта культурного наследия</span>
+                        </label>
+                        <div class="checkbox-hint">При активации будет сгенерирована ссылка на объект в ЕГРОКН в виде QR-кода</div>
+                    </div>
+
+                    <div id="qrCodeSection" class="qr-section" style="display: none;">
+                        <div class="form-group">
+                            <label for="egrknLink" class="label-title">Ссылка на объект культурного наследия в ЕГРОКН</label>
+                            <input type="text" id="egrknLink" name="egrknLink" readonly class="readonly-field" placeholder="https://opendata.mkrf.ru/opendata/7705851331-egrkn/...">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="label-title">QR-код (превью)</label>
+                            <div id="qrCodeContainer" class="qr-code-container">
+                                <div class="qr-placeholder">QR-код будет сгенерирован автоматически</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h3 class="section-title">Схема установки и цветная фотофиксация объекта</h3>
+
+                    <!-- Схема установки -->
+                    <div class="form-group">
+                        <label for="installationScheme" class="label-title">
+                            Схема установки информационной надписи на объект культурного наследия <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Пример: сделайте скриншот Яндекс.Карт с местоположением объекта и отметьте красной стрелкой место установки таблички
+                                </span>
+                            </div>
+                        </label>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="installationScheme" name="installationScheme" accept=".jpeg,.jpg,.png" class="file-input" required>
+                            <div class="file-upload-label">
+                                <div class="upload-icon"></div>
+                                <div class="upload-text">Перетащите файл мышкой или нажмите кнопку ниже</div>
+                                <div class="upload-hint">Размер загружаемого файла должен быть не более 10 МБ, допустимые типы файлов: .jpeg, .jpg, .png</div>
+                                <button type="button" class="btn btn-outline btn-upload" onclick="document.getElementById('installationScheme').click()">ВЫБРАТЬ ФАЙЛ</button>
+                            </div>
+                            <div id="installationSchemePreview" class="file-preview"></div>
+                        </div>
+                    </div>
+
+                    <!-- Цветная фотофиксация -->
+                    <div class="form-group">
+                        <label for="colorPhoto" class="label-title">
+                            Цветная фотофиксация объекта с указанием места размещения <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Пример: сфотографируйте фасад объекта и отметьте красной рамкой место, где будет установлена табличка
+                                </span>
+                            </div>
+                        </label>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="colorPhoto" name="colorPhoto" accept=".jpeg,.jpg,.png" class="file-input" required>
+                            <div class="file-upload-label">
+                                <div class="upload-icon"></div>
+                                <div class="upload-text">Перетащите файл мышкой или нажмите кнопку ниже</div>
+                                <div class="upload-hint">Размер загружаемого файла должен быть не более 10 МБ, допустимые типы файлов: .jpeg, .jpg, .png</div>
+                                <button type="button" class="btn btn-outline btn-upload" onclick="document.getElementById('colorPhoto').click()">ВЫБРАТЬ ФАЙЛ</button>
+                            </div>
+                            <div id="colorPhotoPreview" class="file-preview"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h3 class="section-title">Чертеж пластины в масштабе 1:5 с указанием размеров</h3>
+
+                    <div class="form-group">
+                        <label class="label-title">
+                            Автоматически сгенерированный чертеж <span class="req">*</span>
+                            <div class="tooltip-container">
+                                <span style="font-size: 16px;">❓</span>
+                                <span class="tooltip-text">
+                                    Чертеж формируется автоматически на основе введенных данных. Размеры указаны в масштабе 1:5 согласно ГОСТ Р 21.101-2020.
+                                </span>
+                            </div>
+                        </label>
+                        
+                        <div id="plateDrawingContainer" class="plate-drawing-wrapper">
+                            <svg id="plateDrawing" width="600" height="450" viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Фон -->
+                                <rect width="600" height="450" fill="#f5f5f5"/>
+                                
+                                <!-- Рамка чертежа -->
+                                <rect x="50" y="25" width="500" height="400" fill="#4a4a4a" stroke="#333" stroke-width="3"/>
+                                
+                                <!-- Внутренняя рамка -->
+                                <rect x="65" y="40" width="470" height="370" fill="none" stroke="#fff" stroke-width="2"/>
+                                
+                                <!-- Угловые скругления (отверстия для крепления) -->
+                                <circle cx="80" cy="55" r="8" fill="#fff" stroke="#333" stroke-width="1"/>
+                                <circle cx="520" cy="55" r="8" fill="#fff" stroke="#333" stroke-width="1"/>
+                                <circle cx="80" cy="395" r="8" fill="#fff" stroke="#333" stroke-width="1"/>
+                                <circle cx="520" cy="395" r="8" fill="#fff" stroke="#333" stroke-width="1"/>
+                                
+                                <!-- Герб (будет добавлен автоматически) -->
+                                <g id="drawingCoatOfArms" style="display: none;">
+                                    <rect x="269.5" y="50" width="61" height="50" fill="#c00" stroke="#fff" stroke-width="1"/>
+                                    <text x="300" y="80" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">ГЕРБ</text>
+                                </g>
+                                
+                                <!-- Текст на пластине -->
+                                <text id="drawingTitle" x="300" y="130" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">ОБЪЕКТ КУЛЬТУРНОГО НАСЛЕДИЯ</text>
+                                <text id="drawingCategory" x="300" y="148" text-anchor="middle" fill="#fff" font-size="12">[КАТЕГОРИЯ]</text>
+                                
+                                <text id="drawingObjectName" x="300" y="180" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold">[НАИМЕНОВАНИЕ ОБЪЕКТА]</text>
+                                
+                                <text id="drawingHistory" x="300" y="210" text-anchor="middle" fill="#fff" font-size="14">[СВЕДЕНИЯ О ВРЕМЕНИ]</text>
+                                
+                                <text id="drawingNumber" x="300" y="260" text-anchor="middle" fill="#fff" font-size="12">РЕГИСТРАЦИОННЫЙ № [НОМЕР]</text>
+                                
+                                <text x="300" y="390" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">ОХРАНЯЕТСЯ ГОСУДАРСТВОМ</text>
+                                
+                                <!-- Размерные линии -->
+                                <!-- Ширина -->
+                                <line x1="65" y1="15" x2="535" y2="15" stroke="#0066cc" stroke-width="1"/>
+                                <line x1="65" y1="10" x2="65" y2="20" stroke="#0066cc" stroke-width="1"/>
+                                <line x1="535" y1="10" x2="535" y2="20" stroke="#0066cc" stroke-width="1"/>
+                                <text x="300" y="12" text-anchor="middle" fill="#0066cc" font-size="10">600 мм (масштаб 1:5)</text>
+                                
+                                <!-- Высота -->
+                                <line x1="15" y1="40" x2="15" y2="410" stroke="#0066cc" stroke-width="1"/>
+                                <line x1="10" y1="40" x2="20" y2="40" stroke="#0066cc" stroke-width="1"/>
+                                <line x1="10" y1="410" x2="20" y2="410" stroke="#0066cc" stroke-width="1"/>
+                                <text x="8" y="225" text-anchor="middle" fill="#0066cc" font-size="10" transform="rotate(-90, 8, 225)">450 мм</text>
+                                
+                                <!-- Подпись -->
+                                <text x="300" y="440" text-anchor="middle" fill="#666" font-size="11">Чертеж информационной пластины (масштаб 1:5)</text>
+                            </svg>
+                        </div>
+                        
+                        <div class="drawing-controls">
+                            <button type="button" class="btn btn-outline" onclick="downloadDrawing()">СКАЧАТЬ ЧЕРТЕЖ (PNG)</button>
+                            <button type="button" class="btn btn-outline" onclick="downloadDrawingSVG()">СКАЧАТЬ ЧЕРТЕЖ (SVG)</button>
+                        </div>
+                        
+                        <div class="form-hint">Чертеж формируется автоматически на основе введенных данных. Размеры указаны в масштабе 1:5 согласно ГОСТ Р 21.101-2020.</div>
+                    </div>
+                </div>
+
+                <!-- Кнопки навигации -->
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" onclick="saveProjectLink()">СОХРАНИТЬ ССЫЛКУ НА ПРОЕКТ</button>
+                    <button type="button" class="btn btn-outline" onclick="scrollToDrawing()">ПОСМОТРЕТЬ ЧЕРТЕЖ</button>
+                    <button type="submit" class="btn btn-primary">СФОРМИРОВАТЬ ПРОЕКТ</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <img src="assets/coat_of_arms_kostroma.png" alt="Герб" class="footer-logo" onerror="this.style.display='none'">
+                <div>
+                    <span>КОСТРОМСКАЯ ОБЛАСТЬ</span>
+                    <span>Цифровой конструктор ПИН</span>
+                </div>
+            </div>
+            <div class="footer-socials">
+                <a href="https://github.com/kuzma44/digital-constructor" target="_blank" class="footer-icon" title="GitHub">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.85 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.33.72-4-1.56-4-1.56-.54-1.39 1.33-2.72 1.32-2.72-1.11-.62-2.73-.82-2.73-.82-2.22-.15.17-.22.17-.22 2.44.17 3.71 2.5 3.71 2.5 2.16 3.69 1.82 4.59 2.76.14 1.02.56 1.7 1.01 2.09-.71.62-1.5 1.65-1.74 2.07-1.59.14-.68-.69-1.45-1.24-1.79-.07-.08-.31-1.27-.07-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33s.85.11 1.65.33c1.91-1.29 2.75-1.02 2.75-1.02.74 2.58.27 3.56.07 2.64-.54.14-1.17.44-1.74.79.56 1.14.84 1.91.84 2.59v2.03c0 .32.22.69.82.58A12.001 12.001 0 0024 12c0-6.63-5.37-12-12-12z" fill="#0056b3"/>
+                    </svg>
+                </a>
+                </a>
+                <a href="https://t.me/Qwe355qwe" target="_blank" class="footer-icon" title="Telegram">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.89 8.52l-1.97 9.31c-.14.66-.54.82-1.09.51l-3-2.21-1.45 1.4c-.16.16-.29.29-.6.29l.21-3.01 5.48-4.95c.24-.21-.05-.33-.37-.12l-6.78 4.27-2.93-.92c-.64-.2-.65-.64.13-.95l11.45-4.42c.53-.19 1 .13.81.99z" fill="#0088e6"/>
+                    </svg>
+                </a>
+                <a href="/login" style="color: #0056b3; text-decoration: none; margin-left: 15px; font-size: 14px;">Вход для администратора</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

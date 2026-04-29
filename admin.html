@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Панель администратора</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f6f8; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h1 { color: #333; border-bottom: 2px solid #0056b3; padding-bottom: 10px; }
+        .card { background: #f9f9f9; padding: 20px; margin-top: 20px; border-radius: 5px; border: 1px solid #ddd; }
+        button { padding: 10px 20px; background: #0056b3; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .logout { float: right; text-decoration: none; color: red; font-weight: bold; }
+        #status { margin-top: 10px; padding: 10px; display: none; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/logout" class="logout">Выйти</a>
+        <h1>Администрирование списков</h1>
+        <div class="card">
+            <h3>Загрузить список объектов из Excel (.xlsx)</h3>
+            <p>Файл должен содержать колонки: <b>egrkn, name, address, history, fullName</b></p>
+            <form id="uploadForm">
+                <input type="file" id="excelFile" accept=".xlsx" required style="margin-bottom: 10px;">
+                <br>
+                <button type="submit">Загрузить и обновить базу</button>
+            </form>
+            <div id="status"></div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append('file', document.getElementById('excelFile').files[0]);
+            const statusDiv = document.getElementById('status');
+            statusDiv.style.display = 'block';
+            statusDiv.textContent = 'Загрузка...';
+            statusDiv.className = '';
+            fetch('/api/upload-excel', { method: 'POST', body: formData })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    statusDiv.className = 'success';
+                    statusDiv.textContent = 'Успешно! ' + data.message;
+                } else {
+                    statusDiv.className = 'error';
+                    statusDiv.textContent = 'Ошибка: ' + data.error;
+                }
+            })
+            .catch(err => {
+                statusDiv.className = 'error';
+                statusDiv.textContent = 'Ошибка сети';
+            });
+        });
+    </script>
+</body>
+</html>
